@@ -1,8 +1,10 @@
 .img {
   width: 100%;
   height: 5rem;
+  background-size: cover;
 }
 
 .paper {
   padding-bottom: .5rem;
+  max-width: 100%;
 }
