@@ -20,12 +20,12 @@ function App() {
                 marginBottom={3}
               >
                 Top {city.name} Tours
+              </Typography>
                 <Grid container spacing={5}>
                   {city.tours.map((tour, index) => (
                     <TourCard tour={tour} key={`${tour.name}_${index}`}/>
                   ))}
                 </Grid>
-              </Typography>
             </div>
           ))}
           {/* <TourCard />
