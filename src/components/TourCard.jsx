@@ -1,5 +1,31 @@
 import { Grid, Paper, Typography, Box, Rating } from "@mui/material";
 import { AccessTime } from "@mui/icons-material";
+import { createTheme, ThemeProvider } from '@mui/material';
+
+const theme = createTheme({
+    components: {
+        MuiTypography: {
+            variants: [
+                {
+                    props: {
+                        variant: "body2",
+                    },
+                    style: {
+                        fontSize: 11,
+                    }
+                },
+                {
+                    props: {
+                        variant: "body3",
+                    },
+                    style: {
+                        fontSize: 9,
+                    }
+                },
+            ]
+        }
+    }
+});
 
 const itemData = [
     {
@@ -46,45 +72,47 @@ const itemData = [
 const TourCard = () => {
     return (
         <Grid item xs={3}>
-            <Paper elevation={3} className="paper">
-                <img
-                    src={itemData[0].img}
-                    alt="first"
-                    className="img"
-                />
-                <Box paddingX={1}>
-                    <Typography variant="subtitle1" component="h2">
-                        Immerse into the fall.
-                    </Typography>
-                    <Box display={'flex'} sx={{ alignItems: 'center' }}>
-                        <AccessTime sx={{ width: 12.5 }} />
-                        <Typography variant="body2" component="paragraph" marginLeft={.5}>5 hours</Typography>
-                    </Box>
-                    <Box
-                        display={'flex'}
-                        sx={{ alignItems: 'center' }}
-                        marginTop={3}
-                    >
-                        <Rating
-                            value={4.5}
-                            readOnly
-                            precision={.5}
-                            size="small"
-                        />
-                        <Typography variant="body2" component="paragraph" marginLeft={0.5}>
-                            4.5
+            <ThemeProvider theme={theme}>
+                <Paper elevation={3} className="paper">
+                    <img
+                        src={itemData[0].img}
+                        alt="first"
+                        className="img"
+                    />
+                    <Box paddingX={1}>
+                        <Typography variant="subtitle1" component="h2">
+                            Immerse into the fall.
                         </Typography>
-                        <Typography variant="body3" component="paragraph" marginLeft={0.5}>
-                            (665 reviews)
-                        </Typography>
+                        <Box display={'flex'} sx={{ alignItems: 'center' }}>
+                            <AccessTime sx={{ width: 12.5 }} />
+                            <Typography variant="body2" component="paragraph" marginLeft={.5}>5 hours</Typography>
+                        </Box>
+                        <Box
+                            display={'flex'}
+                            sx={{ alignItems: 'center' }}
+                            marginTop={3}
+                        >
+                            <Rating
+                                value={4.5}
+                                readOnly
+                                precision={.5}
+                                size="small"
+                            />
+                            <Typography variant="body2" component="paragraph" marginLeft={0.5}>
+                                4.5
+                            </Typography>
+                            <Typography variant="body3" component="paragraph" marginLeft={0.5}>
+                                (665 reviews)
+                            </Typography>
+                        </Box>
+                        <Box>
+                            <Typography variant="h6" component="h3" marginTop={0}>
+                                From C $147
+                            </Typography>
+                        </Box>
                     </Box>
-                    <Box>
-                        <Typography variant="h6" component="h3" marginTop={0}>
-                            From C $147
-                        </Typography>
-                    </Box>
-                </Box>
-            </Paper>
+                </Paper>
+            </ThemeProvider>
         </Grid>
     )
 }
